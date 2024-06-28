@@ -1,10 +1,5 @@
-import { deploy } from './ethers-lib'
-
-(async () => {
-  try {
-    const result = await deploy('HelloWorld', [])
-    console.log(`address: ${result.address}`)
-  } catch (e) {
-    console.log(e.message)
-  }
-})()
+const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+module.exports = buildModule("HelloWorldModule", (m) => {
+  const HelloWorldContract = m.contract("HelloWorld", []);
+  return { HelloWorldContract };
+});
