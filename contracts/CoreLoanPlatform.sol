@@ -41,29 +41,19 @@ contract CoreLoanPlatform is Ownable {
     // Add Constructor here
 
     function depositCollateral(uint256 amount) external  {
-        require(amount > 0, "Amount must be greater than 0");
-        USD.safeTransferFrom(msg.sender, address(this), amount);
-        userCollateral[msg.sender] += amount;
-        emit CollateralDeposited(msg.sender, amount);
+      // TODO : Implement Logic for deposting Collateral
     }
 
     function withdrawCollateral(uint256 amount) external  {
-        require(amount > 0, "Amount must be greater than 0");
-        require(userCollateral[msg.sender] >= amount, "Insufficient collateral");
-        uint256 borrowedAmount = loans[msg.sender].active ? loans[msg.sender].amount : 0;
-        uint256 requiredCollateral = (borrowedAmount * COLLATERAL_RATIO) / 100;
-        require(userCollateral[msg.sender] - amount >= requiredCollateral, "Withdrawal would undercollateralize loan");
-        userCollateral[msg.sender] -= amount;
-        USD.safeTransfer(msg.sender, amount);
-        emit CollateralWithdrawn(msg.sender, amount);
+      // TODO : Implement Logic for withdrawing Collateral
     }
 
     function getBorrowableAmount(address user) external view returns (uint256) {
-        return (userCollateral[user] * BORROWABLE_RATIO) / 100;
+      // TODO : Implement Logic for fetching borrowable amount
     }
 
     function getUserCollateral(address user) external view returns (uint256) {
-      return userCollateral[user];
+      // TODO : Implement Logic for fetching user's collateral amount
     }
 
     function borrowBTC(uint256 amount) external  {

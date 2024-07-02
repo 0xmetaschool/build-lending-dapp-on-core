@@ -1,9 +1,9 @@
-import React from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { Lending } from './pages/Lending';
-import { Borrowing } from './pages/Borrowing';
-import { useWeb3 } from './Web3Context';
+import React from "react";
+import { Route, Routes, Link } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Lending } from "./pages/Lending";
+import { Borrowing } from "./pages/Borrowing";
+import { useWeb3 } from "./Web3Context";
 import {
   ChakraProvider,
   Flex,
@@ -20,15 +20,23 @@ import {
   useColorMode,
   Tooltip,
   useToast,
-} from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { FaFaucet } from 'react-icons/fa';
+} from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { FaFaucet } from "react-icons/fa";
 
 const App = () => {
-  const { isConnected, account, connectToMetaMask, disconnectFromMetaMask, tBTC, tUSDT, ethers} = useWeb3();
+  const {
+    isConnected,
+    account,
+    connectToMetaMask,
+    disconnectFromMetaMask,
+    tBTC,
+    tUSDT,
+    ethers,
+  } = useWeb3();
   const { colorMode, toggleColorMode } = useColorMode();
-  const bgColor = useColorModeValue('gray.50', 'gray.900');
-  const textColor = useColorModeValue('gray.800', 'gray.100');
+  const bgColor = useColorModeValue("gray.50", "gray.900");
+  const textColor = useColorModeValue("gray.800", "gray.100");
   const toast = useToast();
 
   const handleFaucet = async () => {
@@ -44,8 +52,8 @@ const App = () => {
     }
 
     try {
-      await tBTC.mint(account.toString(), ethers.parseUnits("10", "ether"))
-      await tUSDT.mint(account.toString(), ethers.parseUnits("100", "ether"))
+      await tBTC.mint(account.toString(), ethers.parseUnits("10", "ether"));
+      await tUSDT.mint(account.toString(), ethers.parseUnits("100", "ether"));
       toast({
         title: "Faucet successful",
         description: "You have received 100 USD and 10 BTC.",
@@ -83,14 +91,20 @@ const App = () => {
                   />
                 </Tooltip>
                 <IconButton
-                  icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                  icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
                   onClick={toggleColorMode}
                   aria-label="Toggle color mode"
                 />
                 {isConnected ? (
                   <HStack>
-                    <Text fontSize="sm">Connected: {account.slice(0, 6)}...{account.slice(-4)}</Text>
-                    <Button colorScheme="red" size="sm" onClick={disconnectFromMetaMask}>
+                    <Text fontSize="sm">
+                      Connected: {account.slice(0, 6)}...{account.slice(-4)}
+                    </Text>
+                    <Button
+                      colorScheme="red"
+                      size="sm"
+                      onClick={disconnectFromMetaMask}
+                    >
                       Disconnect
                     </Button>
                   </HStack>
@@ -103,13 +117,25 @@ const App = () => {
             </Flex>
 
             <HStack as="nav" spacing={8}>
-              <Link as={ChakraLink} to="/" _hover={{ textDecoration: 'none' }}>
+              <Link
+                as={ChakraLink}
+                to="/borrowing"
+                _hover={{ textDecoration: "none" }}
+              >
                 <Button variant="ghost">Home</Button>
               </Link>
-              <Link as={ChakraLink} to="/lending" _hover={{ textDecoration: 'none' }}>
+              <Link
+                as={ChakraLink}
+                to="/borrowing"
+                _hover={{ textDecoration: "none" }}
+              >
                 <Button variant="ghost">Lending</Button>
               </Link>
-              <Link as={ChakraLink} to="/borrowing" _hover={{ textDecoration: 'none' }}>
+              <Link
+                as={ChakraLink}
+                to="/borrowing"
+                _hover={{ textDecoration: "none" }}
+              >
                 <Button variant="ghost">Borrowing</Button>
               </Link>
             </HStack>
