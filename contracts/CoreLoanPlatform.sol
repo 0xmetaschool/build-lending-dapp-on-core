@@ -74,16 +74,16 @@ contract CoreLoanPlatform is Ownable {
       // TODO : Implement Logic for borrowing BTC
     }
 
-    function repayLoan(address user) external  {
-      // TODO : Implement Logic for repaying Loan
-    }
-
     function depositBTC(uint256 amount) external  {
       // TODO : Implement Logic for deposting BTC
     }
 
     function withdrawBTC(uint256 amount) external  {
       // TODO : Implement Logic for withdrawing BTC
+    }
+
+    function repayLoan(address user) external  {
+      // TODO : Implement Logic for repaying Loan
     }
 
     function calculateInterest(address user) external view returns (uint256) {
