@@ -1,5 +1,11 @@
 # Lending dApp on the Core Network
 
+## Pre-requisites
+- [Download & Install Node.js](https://nodejs.org/) 
+- [Visual Studio Code (VSCode)](code.visualstudio.com) 
+- [Git](git-scm.com)
+
+
 ## Configure Git CLI
 - Open your favorite terminal.
 - Run `gh --version` to ensure that you have installed the Git CLI successfully.
