@@ -2,8 +2,8 @@
 
 ## Pre-requisites
 - [Download & Install Node.js](https://nodejs.org/) 
-- [Visual Studio Code (VSCode)](code.visualstudio.com) 
-- [Git](git-scm.com)
+- [Visual Studio Code (VSCode)](https://visualstudio.microsoft.com/) 
+- [Git](https://git-scm.com/)
 
 
 ## Configure Git CLI
