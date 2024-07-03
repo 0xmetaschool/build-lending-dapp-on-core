@@ -1,7 +1,8 @@
 # Lending dApp on the Core Network
 
 ## Pre-requisites
-- [Download & Install Node.js](https://nodejs.org/) 
+Following are the pre-requisites tools that you'll need: 
+- [Node.js](https://nodejs.org/) 
 - [Visual Studio Code (VSCode)](https://visualstudio.microsoft.com/) 
 - [Git](https://git-scm.com/)
 
