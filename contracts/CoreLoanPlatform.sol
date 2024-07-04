@@ -91,28 +91,19 @@ contract CoreLoanPlatform is Ownable {
     }    
 
     function depositBTC(uint256 amount) external  {
-      require(amount > 0, "Amount must be greater than 0");
-      BTC.safeTransferFrom(msg.sender, address(this), amount);
-      lenderBalances[msg.sender] += amount;
-      totalStaked = totalStaked + amount;
-      emit BTCDeposited(msg.sender, amount);
+      // TODO : Implement Logic for deposting BTC
     }
 
     function withdrawBTC(uint256 amount) external  {
-      require(amount > 0, "Amount must be greater than 0");
-      require(lenderBalances[msg.sender] >= amount, "Insufficient balance");
-      lenderBalances[msg.sender] -= amount;
-      totalStaked = totalStaked - amount;
-      BTC.safeTransfer(msg.sender, amount);
-      emit BTCWithdrawn(msg.sender, amount);
+      // TODO : Implement Logic for withdrawing BTC
     }
 
     function getUserStaked(address user) external view returns (uint256) {
-      return lenderBalances[user];
+      // TODO : Implement Logic for fetching a User's Staked amount
     }
 
     function getCurrentApy() external pure returns (uint256) {
-      return INTEREST_RATE;
+      // TODO : Implement Logic for fetching current APY
     }
 
     function repayLoan(address user) external  {
