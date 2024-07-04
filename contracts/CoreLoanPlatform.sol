@@ -48,6 +48,10 @@ contract CoreLoanPlatform is Ownable {
       // TODO : Implement Logic for withdrawing Collateral
     }
 
+    function borrowBTC(uint256 amount) external  {
+      // TODO : Implement Logic for borrowing BTC
+    }
+
     function withdrawBTC(uint256 amount) external  {
       // TODO : Implement Logic for withdrawing BTC
     }
@@ -58,10 +62,6 @@ contract CoreLoanPlatform is Ownable {
 
     function getUserCollateral(address user) external view returns (uint256) {
       // TODO : Implement Logic for fetching user's collateral amount
-    }
-
-    function borrowBTC(uint256 amount) external  {
-      // TODO : Implement Logic for borrowing BTC
     }
 
     function depositBTC(uint256 amount) external  {
