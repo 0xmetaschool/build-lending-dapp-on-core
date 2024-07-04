@@ -63,7 +63,23 @@ contract CoreLoanPlatform is Ownable {
     }
 
     function borrowBTC(uint256 amount) external  {
-      // TODO : Implement Logic for borrowing BTC
+      require(amount > 0, "Amount must be greater than 0");
+      require(!loans[msg.sender].active, "Existing loan must be repaid first");
+
+      uint256 requiredCollateral = (amount * COLLATERAL_RATIO) / 100;
+      require(userCollateral[msg.sender] >= requiredCollateral, "Insufficient collateral");
+      
+      uint256 maxBorrowable = (userCollateral[msg.sender] * BORROWABLE_RATIO) / 100;
+      require(amount <= maxBorrowable, "Borrow amount exceeds limit");
+
+      require(BTC.balanceOf(address(this)) >= amount, "Insufficient BTC in contract");
+
+      loans[msg.sender] = Loan(amount, requiredCollateral, block.timestamp, true);
+      BTC.safeTransfer(msg.sender, amount);
+
+      totalBorrowed = totalBorrowed + amount;
+
+      emit LoanTaken(msg.sender, amount, requiredCollateral);
     }
 
     function getBorrowableAmount(address user) external view returns (uint256) {
@@ -75,19 +91,28 @@ contract CoreLoanPlatform is Ownable {
     }    
 
     function depositBTC(uint256 amount) external  {
-      // TODO : Implement Logic for deposting BTC
+      require(amount > 0, "Amount must be greater than 0");
+      BTC.safeTransferFrom(msg.sender, address(this), amount);
+      lenderBalances[msg.sender] += amount;
+      totalStaked = totalStaked + amount;
+      emit BTCDeposited(msg.sender, amount);
     }
 
     function withdrawBTC(uint256 amount) external  {
-      // TODO : Implement Logic for withdrawing BTC
+      require(amount > 0, "Amount must be greater than 0");
+      require(lenderBalances[msg.sender] >= amount, "Insufficient balance");
+      lenderBalances[msg.sender] -= amount;
+      totalStaked = totalStaked - amount;
+      BTC.safeTransfer(msg.sender, amount);
+      emit BTCWithdrawn(msg.sender, amount);
     }
 
     function getUserStaked(address user) external view returns (uint256) {
-      // TODO : Implement Logic for fetching a User's Staked amount
+      return lenderBalances[user];
     }
 
     function getCurrentApy() external pure returns (uint256) {
-      // TODO : Implement Logic for fetching current APY
+      return INTEREST_RATE;
     }
 
     function repayLoan(address user) external  {
