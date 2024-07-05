@@ -142,8 +142,8 @@ const App = () => {
 
             <Box width="100%">
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/lending" element={<Lending />} />
+                <Route path="/" element={<Borrowing />} />
+                <Route path="/lending" element={<Borrowing />} />
                 <Route path="/borrowing" element={<Borrowing />} />
               </Routes>
             </Box>
