@@ -129,7 +129,7 @@ const App = () => {
               </Link>
               <Link
                 as={ChakraLink}
-                to="/borrowing"
+                to="/lending"
                 _hover={{ textDecoration: "none" }}
               >
                 <Button variant="ghost">Borrowing</Button>
@@ -138,9 +138,9 @@ const App = () => {
 
             <Box width="100%">
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Lending />} />
                 <Route path="/lending" element={<Lending />} />
-                <Route path="/borrowing" element={<Borrowing />} />
+                <Route path="/borrowing" element={<Lending />} />
               </Routes>
             </Box>
           </VStack>
