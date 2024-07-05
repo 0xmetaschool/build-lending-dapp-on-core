@@ -52,10 +52,6 @@ contract CoreLoanPlatform is Ownable {
       // TODO : Implement Logic for borrowing BTC
     }
 
-    function withdrawBTC(uint256 amount) external  {
-      // TODO : Implement Logic for withdrawing BTC
-    }
-
     function getBorrowableAmount(address user) external view returns (uint256) {
       // TODO : Implement Logic for fetching borrowable amount
     }
@@ -66,6 +62,18 @@ contract CoreLoanPlatform is Ownable {
 
     function depositBTC(uint256 amount) external  {
       // TODO : Implement Logic for deposting BTC
+    }
+
+    function withdrawBTC(uint256 amount) external  {
+      // TODO : Implement Logic for withdrawing BTC
+    }
+
+    function getUserStaked(address user) external view returns (uint256) {
+      // TODO : Implement Logic for fetching a User's Staked amount
+    }
+
+    function getCurrentApy() external pure returns (uint256) {
+      // TODO : Implement Logic for fetching current APY
     }
 
     function repayLoan(address user) external  {
@@ -92,15 +100,7 @@ contract CoreLoanPlatform is Ownable {
       // TODO : Implement Logic for fetching total borrowed amount
     }
 
-    function getCurrentApy() external pure returns (uint256) {
-      // TODO : Implement Logic for fetching current APY
-    }
-
     function getUserBorrowed(address user) external view returns (uint256) {
       // TODO : Implement Logic for fetching a User's borrowed amount
-    }
-
-    function getUserStaked(address user) external view returns (uint256) {
-      // TODO : Implement Logic for fetching a User's Staked amount
     }
 }
