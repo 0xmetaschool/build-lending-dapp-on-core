@@ -2,5 +2,5 @@
 pragma solidity ^0.8.24;
 
 contract HelloWorld {
-    string public message = "Hello, Core!";
+	string public message = "Hello, Core!";
 }
